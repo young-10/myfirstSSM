@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  servlet:
+
+spring:
+
+  datasource:
+    username: root
+    password: qy562704
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/blog?serverTimezone=UTC&Unicode=true&characterEncoding=utf-8
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  thymeleaf:
+    cache: false   #开发环境禁用thymeleaf的缓存
+    mode: HTML
+
+mybatis:
+  #指定mapper映射文件的位置
+  mapper-locations: classpath:mybatis/mapper/**.xml
+  #开启驼峰命名式规则
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.young.entity
+
+logging:
+  file:
+    path: /log/blog.log
+  level:
+    root: info  #设置全局日志级别，此处默认为info,生产环境可设置为更高级别的warn
+    com.young: debug  #指定对应目录的日志级别，在此目录内的日志级别为debug
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
